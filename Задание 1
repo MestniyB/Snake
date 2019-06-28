@@ -1,0 +1,86 @@
+import time
+import random
+
+class A(object):
+ def __init__(self,f,hp,dmg):
+    self.f = f
+    self.hp = hp
+    self.dmg = dmg
+    def at(self):
+        self.hp = self.hp - dmg
+        hp = hp - self.dmg
+
+#main part
+
+a = A(1,100,10)
+e = A(0,20,1)
+e1 = A(0,40,20)
+e2 = A(0,30,10)
+
+def potion():
+    r = random.randint(0,1)
+    while 1 == 1:
+        print('нажми p,чтобы восстановить hp')
+        i = input()
+        if i == 'p':
+            a.hp = a.hp + 5
+            break
+        print('3')
+        time.sleep(1)
+        i = input()
+        if i == 'p':
+            a.hp = a.hp + 5
+            break
+        print('2')
+        time.sleep(1)
+        i = input()
+        if i == 'p':
+            a.hp = a.hp + 5
+            break
+        print('1')
+        time.sleep(1)
+        break
+
+while a.hp > 0:
+    print('иду по лесу')
+    c = random.randint(0, 1)
+    time.sleep(2)
+    if c == 0:
+        print('ничего не произошло')
+    else:
+        print('впереди противник')
+        print('атаковать?(pres a, else b)')
+        k = input()
+        if k == 'a':
+            while e.hp > 0:
+                print('вы наносите удар')
+                e.hp = e.hp - a.dmg
+                a.hp = a.hp - e.dmg
+                print('ваше hp:', a.hp)
+                print('hp противника:', e.hp)
+                time.sleep(2)
+        else:
+            print('вы убили противника')
+            e.hp = 20
+            time.sleep(2)
+        if k == 'b':
+            c = random.randint(0,1)
+            time.sleep(2)
+            if c == 1:
+                print('вы убежали')
+            else:
+                print('вы не смогли убежать')
+                time.sleep(2)
+                while e.hp > 0:
+                    print('вы наносите удар')
+                    e.hp = e.hp - a.dmg
+                    a.hp = a.hp - e.dmg
+                    print('ваше hp:', a.hp)
+                    print('hp противника:', e.hp)
+                    time.sleep(2)
+                else:
+                    print('вы убили противника')
+                    time.sleep(2)
+                    e.hp = 20
+        else:
+            print('вы мертвы.....')
